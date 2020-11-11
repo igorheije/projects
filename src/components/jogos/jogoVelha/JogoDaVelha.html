@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Jogo da Velha</title>
+        <meta charset="utf-8">
+        <script src="JogoDaVelha.js"></script>
+        
+        <style>
+            #dvjogo{
+                width: 160px;
+                height: 160px;
+                display: flex;
+                flex-wrap: wrap;
+                align-content: flex-start;
+            }
+            .posJogo{
+                width: 50px;
+                height: 50px;
+                margin: 0px;
+                padding: 0px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 40px;
+
+                
+            }
+            #p1{
+                border-right: 1px solid #000;
+                border-bottom: 1px solid #000;
+            }
+            #p2{
+                border-left: 1px solid #000;
+                border-right: 1px solid #000;
+                border-bottom: 1px solid #000;
+                
+            }
+            #p3{
+                border-left: 1px solid #000;
+                border-bottom: 1px solid #000;
+            }
+            
+            #p4{
+                border-right: 1px solid #000;
+                border-top: 1px solid #000;
+                border-bottom: 1px solid #000;
+            }
+            #p5{
+                border-left: 1px solid #000;
+                border-top: 1px solid #000;
+                border-right: 1px solid #000;
+                border-bottom: 1px solid #000;
+            }
+            #p6{
+                border-left: 1px solid #000;
+                border-top: 1px solid #000;
+                border-bottom: 1px solid #000;
+            }
+            #p7{
+                border-right: 1px solid #000;
+                border-top: 1px solid #000;
+            }
+            #p8{
+                border-left: 1px solid #000;
+                border-right: 1px solid #000;
+                border-top: 1px solid #000;;
+            }
+            #p9{
+                border-top: 1px solid #000;;
+                border-left: 1px solid #000;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="dvmenu">
+            <div id="dvQuemComeca">Quem Joga:</div>
+            <button onclick="inicia()">Jogar</button>
+        </div>
+        <div id="dvjogo">
+            <div id="p1" class="posJogo" onclick="jogar(1)"></div>
+            <div id="p2" class="posJogo" onclick="jogar(2)"></div>
+            <div id="p3" class="posJogo" onclick="jogar(3)"></div>
+            <div id="p4" class="posJogo" onclick="jogar(4)"></div>
+            <div id="p5" class="posJogo" onclick="jogar(5)"></div>
+            <div id="p6" class="posJogo" onclick="jogar(6)"></div>
+            <div id="p7" class="posJogo" onclick="jogar(7)"></div>
+            <div id="p8" class="posJogo" onclick="jogar(8)"></div>
+            <div id="p9" class="posJogo" onclick="jogar(9)"></div>
+        </div>
+    </body>
+</html>

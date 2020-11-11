@@ -1,0 +1,21 @@
+.estrutura {
+    padding: 15px;
+    color: #04240e;
+    font-size: 20px
+}
+
+.estrutura input {
+    padding: 1px;
+
+    height: 30px;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+.estrutura label {
+    font-size: 25px;
+}
+
+.estrutura input:focus {
+    outline-color: #103f18;
+}
