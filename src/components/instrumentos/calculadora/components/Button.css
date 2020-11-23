@@ -10,10 +10,19 @@
     border-right: var(--border-button);
     border-bottom: var(--border-button);
     outline: none;
+    cursor: pointer;
+
+}
+.button:hover {
+    background-color: #ccc;
+}
+.button.operation:hover{
+    background-color:#fa8231cc;
 }
 
 .button:active {
     background-color: #ccc;
+    
 }
 
 .button.double {

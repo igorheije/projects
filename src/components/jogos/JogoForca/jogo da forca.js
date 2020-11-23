@@ -102,4 +102,6 @@ function inicia() {
     desenhos[i].style.display = "none";
   }
 }
-window.addEventListener("load", inicia);
+
+
+export {jogar, inicia}

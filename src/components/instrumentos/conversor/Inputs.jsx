@@ -1,27 +1,104 @@
-import React from 'react'
-import './Inputs.css'
+import React from 'react';
+import './Inputs.css';
+import {
+  BinToDec,
+  BinToHex,
+  BinToOct,
+  OctToDec,
+  OctToBin,
+  OctToHex,
+  HexToDec,
+  HexToBin,
+  HexToOct,
+} from './functions.js';
 
+export default function Inputs() {
+  const [valor, setValor] = React.useState({
+    dec: 0,
+    bin: 0,
+    oct: 0,
+    hex: 0,
+  });
 
-
-export default props => {
-    
-    function valor(e){
-        const input = e.currentTarget
-        const valor = e.currentTarget.value
-        console.log(valor)
+  function handleChange(event) {
+    const { name, value } = event.target;
+    const regexD = /[ 0-9]+$/;
+    const regexB = /[0-1]+$/;
+    const regexO = /[0-7]+$/;
+    const regexH = /[0-9a-f]+$/;
+    // console.log(regexD.test(value));
+    if (name === 'dec') {
+      if (regexD.test(value)) {
+        event.preventDefault();
+        let numero = Number(value);
+        let bin = numero.toString(2);
+        let oct = numero.toString(8);
+        let hex = numero.toString(16);
+        setValor({ ...valor, dec: value, bin: bin, oct: oct, hex: hex });
+      }
     }
-    return (
-        <div className="estrutura">
-        <p>Para converter informe um número em um dos campos abaixo.</p>
-        <br></br>
-        <label> Décimal </label>
-        <input type="text" name="dec"  onKeyUp={valor} />
-        <label> Binário </label>
-        <input type="text" name="bin"  onKeyUp={valor} />
-        <label> Octal </label>
-        <input type="text" name="oct"  onKeyUp={valor} />
-        <label> Hexadecimal </label>
-        <input type="text" name="hex"  onKeyUp={valor} />
-        </div>
-    )
+    if (name === 'bin') {
+      if (regexB.test(value)) {
+        let dec = BinToDec(value);
+        let oct = BinToOct(value);
+        let hex = BinToHex(value);
+        setValor({ ...valor, dec: dec, bin: value, oct: oct, hex: hex });
+      }
+    }
+    if (name === 'oct') {
+      if (regexO.test(value)) {
+        let dec = OctToDec(value);
+        let bin = OctToBin(value);
+        let hex = OctToHex(value);
+        setValor({ ...valor, bin: bin, dec: dec, oct: value, hex: hex });
+      }
+    }
+    if (name === 'hex') {
+      if (regexH.test(value)) {
+        let dec = HexToDec(value);
+        let bin = HexToBin(value);
+        let oct = HexToOct(value);
+        setValor({ ...valor, bin: bin, oct: oct, dec: dec, hex: value });
+      }
+    }
+  }
+
+  return (
+    <div className="estrutura">
+      <p>Para converter informe um número em um dos campos abaixo.</p>
+      <br></br>
+      <label htmlFor="dec"> Décimal </label>
+      <input
+        id="dec"
+        type="text"
+        name="dec"
+        value={valor.dec}
+        onChange={handleChange}
+      />
+      <label htmlFor="bin"> Binário </label>
+      <input
+        id="bin"
+        type="text"
+        name="bin"
+        value={valor.bin}
+        onChange={handleChange}
+      />
+      <label htmlFor="oct"> Octal </label>
+      <input
+        id="oct"
+        type="text"
+        name="oct"
+        value={valor.oct}
+        onChange={handleChange}
+      />
+      <label htmlFor="hex"> Hexadecimal </label>
+      <input
+        id="hex"
+        type="text"
+        name="hex"
+        value={valor.hex}
+        onChange={handleChange}
+      />
+    </div>
+  );
 }
