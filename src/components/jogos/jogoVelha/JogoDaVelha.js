@@ -21,6 +21,7 @@
 //             jogo[l][c]="O"
 
 //         }else if(nivel===2){
+    
 //             //defesa
 //             if((jogo[0][0]==="O")&&(jogo[0][1]==="O")&&(jogo[0][2]==="")){
 //                 jogo[0][2]="O"

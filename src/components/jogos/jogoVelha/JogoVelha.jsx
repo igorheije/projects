@@ -30,11 +30,88 @@ export default function JogoDaVelha() {
   const [valor, setValor] = React.useState(initial);
   const [jogador, setJogador] = React.useState(true);
   const [ganhador, setGanhador] = React.useState('');
-  const [tipo, setTipo] = React.useState(1);
+  const [cpu, setCpu] = React.useState(false);
+  const [tipojogo, setTipoJogo] = React.useState(1);
+  const [quemjoga, setQuemjoga] = React.useState(false);
+
+  React.useEffect(() => {
+    validacao(valor);
+    if (quemjoga) return Cpu(valor);
+  }, [valor, quemjoga]);
 
   function Cpu({ p1, p2, p3, p4, p5, p6, p7, p8, p9 }) {
-    const c1 = p1 === p4 && p7 === '';
+    const c7 =
+      (p1 === p4 && p1 !== '' && p7 === '') ||
+      (p8 === p9 && p8 !== '' && p7 === '') ||
+      (p3 === p5 && p3 !== '' && p7 === ''); //p7
+
+    const c8 =
+      (p2 === p5 && p2 !== '' && p8 === '') ||
+      (p7 === p9 && p7 !== '' && p8 === ''); //p8
+
+    const c9 =
+      (p3 === p6 && p3 !== '' && p9 === '') ||
+      (p7 === p8 && p7 !== '' && p9 === '') ||
+      (p1 === p5 && p1 !== '' && p9 === ''); //P9
+
+    const c1 =
+      (p2 === p3 && p2 !== '' && p1 === '') ||
+      (p4 === p5 && p4 !== '' && p1 === '') ||
+      (p9 === p5 && p9 !== '' && p1 === ''); //p1
+    const c2 =
+      (p1 === p3 && p1 !== '' && p2 === '') ||
+      (p5 === p8 && p5 !== '' && p2 === ''); //p2
+
+    const c3 =
+      (p1 === p2 && p1 !== '' && p3 === '') ||
+      (p6 === p9 && p6 !== '' && p3 === '') ||
+      (p7 === p5 && p7 !== '' && p3 === ''); //P3
+
+    const c4 =
+      (p1 === p7 && p1 !== '' && p4 === '') ||
+      (p5 === p6 && p5 !== '' && p4 === ''); //P4
+
+    const c5 =
+      (p1 === p9 && p1 !== '' && p5 === '') ||
+      (p2 === p8 && p2 !== '' && p5 === '') ||
+      (p4 === p6 && p4 !== '' && p5 === ''); //p5
+
+    const c6 =
+      (p3 === p9 && p3 !== '' && p6 === '') ||
+      (p4 === p5 && p4 !== '' && p6 === ''); //P6
+
+    if (quemjoga && cpu && validacao(valor)) {
+      if (c1) {
+        setValor({ ...valor, p1: 'O' });
+      }
+      if (c2) {
+        setValor({ ...valor, p2: 'O' });
+      }
+      if (c3) {
+        setValor({ ...valor, p3: 'O' });
+      }
+      if (c4) {
+        setValor({ ...valor, p4: 'O' });
+      }
+      if (c5) {
+        setValor({ ...valor, p5: 'O' });
+      }
+      if (c6) {
+        setValor({ ...valor, p6: 'O' });
+      }
+      if (c7) {
+        setValor({ ...valor, p7: 'O' });
+      }
+      if (c8) {
+        setValor({ ...valor, p8: 'O' });
+      }
+      if (c9) {
+        setValor({ ...valor, p9: 'O' });
+      }
+    }
+    console.log('oi');
   }
+
   function validacao({ p1, p2, p3, p4, p5, p6, p7, p8, p9 }) {
     const v1 = p1 === p2 && p2 === p3;
     const v2 = p1 === p5 && p5 === p9;
@@ -58,24 +135,35 @@ export default function JogoDaVelha() {
     }
     return true;
   }
-  React.useEffect(() => {
-    validacao(valor);
-  }, [valor, ganhador]);
-  function jogar({ target }) {
-    if (jogador && validacao(valor)) {
+
+  function jogarCpu({ target }) {
+    if (!quemjoga && cpu && validacao(valor)) {
       if (target.innerText === '') {
         setValor({ ...valor, [target.id]: 'X' });
         target.innerText = valor[target.id];
-        // target.innerText = 'X';
-        setJogador(!jogador);
       }
     }
-    if (!jogador && validacao(valor)) {
-      if (target.innerText === '') {
-        setValor({ ...valor, [target.id]: 'O' });
-        target.innerText = valor[target.id];
-        console.log(valor[target.id]);
-        setJogador(!jogador);
+
+    setQuemjoga(!quemjoga);
+  }
+
+  function jogar({ target }) {
+    if (!cpu) {
+      if (jogador && validacao(valor)) {
+        if (target.innerText === '') {
+          setValor({ ...valor, [target.id]: 'X' });
+          target.innerText = valor[target.id];
+          setJogador(!jogador);
+          console.log('1');
+        }
+      }
+      if (!jogador && validacao(valor)) {
+        if (target.innerText === '') {
+          setValor({ ...valor, [target.id]: 'O' });
+          target.innerText = valor[target.id];
+          setJogador(!jogador);
+          console.log('2');
+        }
       }
     }
   }
@@ -83,17 +171,22 @@ export default function JogoDaVelha() {
   function recomecar() {
     setValor(initial);
     setGanhador('');
+    setQuemjoga(false);
   }
   function jogoCpu() {
-    setJogador(true);
     setGanhador('');
     setValor(initial);
-    setTipo(0);
+
+    setCpu(true);
+    setTipoJogo(0);
+    setQuemjoga(false);
   }
   function jogoPlayer() {
     setGanhador('');
     setValor(initial);
-    setTipo(1);
+
+    setTipoJogo(1);
+    setCpu(false);
   }
 
   return (
@@ -101,17 +194,19 @@ export default function JogoDaVelha() {
       <div id="main">
         <div id="dvmenu">
           <h4>Escolha o modo de jogo:</h4>
-          <button className="btn " value={tipo} onClick={jogoPlayer}>
+          <button className="btn " onClick={jogoPlayer}>
             Player X Player
           </button>
-          <button className="btn" value={tipo} onClick={jogoCpu}>
+          <button className="btn" onClick={jogoCpu}>
             CPU X Player
           </button>
           <hr />
           <div id="dvQuemComeca">
-            <h5 id="modoJogo">{tipo ? 'Player X Player' : 'CPU X Player'}</h5>
+            <h5 id="modoJogo">
+              {tipojogo ? 'Player X Player' : 'CPU X Player'}
+            </h5>
             <h5>Quem Joga:</h5>
-            {tipo ? (
+            {tipojogo ? (
               <p>{jogador ? ' Player 1' : ' Player 2'}</p>
             ) : (
               <p>{jogador ? ' Player' : ' CPU'}</p>
@@ -127,7 +222,7 @@ export default function JogoDaVelha() {
               key={mar.id}
               id={mar.id}
               className="posJogo"
-              onClick={jogar}
+              onClick={cpu ? jogarCpu : jogar}
               value={valor[mar.id]}
             >
               {valor[mar.id]}
