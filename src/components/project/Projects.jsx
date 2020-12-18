@@ -5,10 +5,10 @@ import Main from '../template/Main';
 export default (props) => (
   <Main icon="paw" title="Meus Projetos" subtitle="Sobre">
     <p>
-      Após conhcer um pouco sobre o Javascript, comecei a me aprovundar bastante
+      Após conhcer um pouco sobre o Javascript, comecei a me aprofundar bastante
       em um de seus frameworks, o React.js.
     </p>
-    <p>Venho apresentar alguns pequenos projetos que eu ja criei.</p>
+    <p>Venho apresentar alguns pequenos projetos criados por mim.</p>
     <ul>
       <h5>1 - Instrumentos Matemáticos:</h5>
       <li>Conversor de Bases</li>

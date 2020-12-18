@@ -11,25 +11,27 @@ import {
   HexToBin,
   HexToOct,
 } from './functions.js';
+const inicial = {
+  dec: '',
+  bin: '',
+  oct: '',
+  hex: '',
+};
 
 export default function Inputs() {
-  const [valor, setValor] = React.useState({
-    dec: 0,
-    bin: 0,
-    oct: 0,
-    hex: 0,
-  });
+  const [valor, setValor] = React.useState(inicial);
 
   function handleChange(event) {
     const { name, value } = event.target;
+
     const regexD = /[ 0-9]+$/;
     const regexB = /[0-1]+$/;
     const regexO = /[0-7]+$/;
     const regexH = /[0-9a-f]+$/;
-    // console.log(regexD.test(value));
+
     if (name === 'dec') {
       if (regexD.test(value)) {
-        event.preventDefault();
+        console.log('limpar tudo');
         let numero = Number(value);
         let bin = numero.toString(2);
         let oct = numero.toString(8);

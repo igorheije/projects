@@ -9,7 +9,7 @@ import Instrumentos from '../components/instrumentos/Instrumentos';
 import Jogos from '../components/jogos/Jogos';
 import JogoVelha from '../components/jogos/jogoVelha/JogoVelha';
 import Forca from '../components/jogos/JogoForca/Forca';
-export default (props) => (
+export default () => (
   <Switch>
     <Route exact path="/" component={Home} />
     <Route path="/projetos" component={Projetos} />
