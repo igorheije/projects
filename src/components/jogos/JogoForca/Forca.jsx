@@ -1,28 +1,24 @@
 import React from 'react';
 
 import Main from '../../template/Main';
-import './style.css';
+
 import './Forca.css';
 
-// import Boneco from './Boneco'
-import Letras from './Letras';
-import './jogo da forca';
-
-export default (props) => {
+export default function Forca() {
   const [letras, setLetras] = React.useState([]);
   const [error, setError] = React.useState('');
   const [corretas, setCorretas] = React.useState([]);
-  const [erros, setErros] = React.useState(0);
+  const [erros, setErros] = React.useState(7);
 
   const palavra = 'palavra';
   const regexLetras = /^[a-z]+$/i;
 
   function validarLetra(letra) {
-    if (erros < 7) {
+    if (erros > 0) {
       if ([...palavra].includes(letra)) {
         setCorretas([...corretas, letra.toLocaleUpperCase()]);
       } else {
-        setErros(erros + 1);
+        setErros(erros - 1);
       }
     }
   }
@@ -30,7 +26,7 @@ export default (props) => {
   function jogar(e) {
     e.preventDefault();
     const input = e.target[0];
-    if (erros === 7) return;
+    if (erros === 0) return;
 
     if (regexLetras.test(input.value)) {
       if (letras.includes(input.value.toLocaleUpperCase())) {
@@ -49,8 +45,7 @@ export default (props) => {
   }
 
   React.useEffect(() => {
-    if (erros === 7) setError('Você Perdeu');
-    console.log(corretas);
+    if (erros === 0) setError('Você Perdeu');
   }, [erros]);
 
   return (
@@ -60,7 +55,7 @@ export default (props) => {
           return <div key={i}> {corretas.includes(l) ? l : ''} </div>;
         })}
       </div>
-      {/* <Boneco/> */}
+
       <p>
         Letras digitadas :
         {letras.map((letra) => {
@@ -69,10 +64,12 @@ export default (props) => {
       </p>
       <form onSubmit={jogar}>
         <input id="letra" type="text" maxLength="1" />
-        <button>Jogar</button>
+        <button className="butt">Jogar</button>
       </form>
+      <br />
+      {`Chances: ${erros}`}
       <br />
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </Main>
   );
-};
+}

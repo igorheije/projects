@@ -109,7 +109,6 @@ export default function JogoDaVelha() {
         setValor({ ...valor, p9: 'O' });
       }
     }
-    console.log('oi');
   }
 
   function validacao({ p1, p2, p3, p4, p5, p6, p7, p8, p9 }) {
@@ -154,7 +153,6 @@ export default function JogoDaVelha() {
           setValor({ ...valor, [target.id]: 'X' });
           target.innerText = valor[target.id];
           setJogador(!jogador);
-          console.log('1');
         }
       }
       if (!jogador && validacao(valor)) {
@@ -162,7 +160,6 @@ export default function JogoDaVelha() {
           setValor({ ...valor, [target.id]: 'O' });
           target.innerText = valor[target.id];
           setJogador(!jogador);
-          console.log('2');
         }
       }
     }

@@ -4,7 +4,7 @@ import Main from '../template/Main';
 export default function Jogos() {
   return (
     <Main title="Jogos" subtitle="Meus gamesinhos" icon="gamepad">
-      asdasd
+      Jogos..
     </Main>
   );
 }

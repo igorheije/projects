@@ -13,3 +13,12 @@
   margin-right: 10px;
   border-bottom: 1px solid #000;
 }
+
+.butt {
+  margin-left: 10px;
+  padding: 5px 10px;
+}
+.butt:hover {
+  background-color: green;
+  color: white;
+}

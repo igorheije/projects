@@ -31,7 +31,6 @@ export default function Inputs() {
 
     if (name === 'dec') {
       if (regexD.test(value)) {
-        console.log('limpar tudo');
         let numero = Number(value);
         let bin = numero.toString(2);
         let oct = numero.toString(8);
