@@ -1,7 +1,7 @@
 import React from 'react';
 import Main from '../template/Main';
 
-export default (props) => (
+const Home = (props) => (
   <Main icon="home" title="Início" subtitle="Refazendo o Segundo projetinho">
     <div className="display-4">Bem Vindo!</div>
     <hr />
@@ -11,3 +11,4 @@ export default (props) => (
     </p>
   </Main>
 );
+export default Home;

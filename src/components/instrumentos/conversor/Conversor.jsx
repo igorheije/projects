@@ -5,7 +5,7 @@ import './Conversor.css';
 import Inputs from './Inputs';
 import Main from '../../template/Main';
 
-export default (props) => {
+const Conversor = () => {
   return (
     <div className="conversor">
       <Main
@@ -18,3 +18,4 @@ export default (props) => {
     </div>
   );
 };
+export default Conversor;

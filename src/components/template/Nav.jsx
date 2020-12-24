@@ -3,9 +3,9 @@ import React from 'react';
 import Icons from './Icons';
 import { Link } from 'react-router-dom';
 
-import { Accordion, Card, Button } from 'react-bootstrap';
+import { Accordion, Card } from 'react-bootstrap';
 
-export default (props) => {
+const Nav = (props) => {
   return (
     <aside className="menu-area">
       <nav className="menu">
@@ -66,3 +66,4 @@ export default (props) => {
     </aside>
   );
 };
+export default Nav;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import Main from '../template/Main';
 
-export default (props) => (
+const Projects = () => (
   <Main icon="paw" title="Meus Projetos" subtitle="Sobre">
     <p>
       Após conhcer um pouco sobre o Javascript, comecei a me aprofundar bastante
@@ -20,3 +20,5 @@ export default (props) => (
     </ul>
   </Main>
 );
+
+export default Projects;

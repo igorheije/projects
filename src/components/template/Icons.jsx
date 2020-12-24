@@ -1,4 +1,5 @@
 import React from 'react';
 
-export default props => 
-    <i className={`fa fa-${props.icon}`}></i>
+const Icnos = (props) => <i className={`fa fa-${props.icon}`}></i>;
+
+export default Icnos;

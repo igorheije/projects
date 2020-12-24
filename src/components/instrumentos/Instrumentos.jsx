@@ -1,7 +1,7 @@
 import React from 'react';
 import Main from '../template/Main';
 
-export default (props) => (
+const Instrumentos = () => (
   <Main icon="paw" title="Instrumentos Matemáticos" subtitle="Sobre">
     <h4>Duas pequenas produção criadas com a utilização do React.js:</h4>
     <ul>
@@ -14,3 +14,4 @@ export default (props) => (
     </ul>
   </Main>
 );
+export default Instrumentos;

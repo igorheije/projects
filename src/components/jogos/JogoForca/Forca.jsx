@@ -4,7 +4,7 @@ import Main from '../../template/Main';
 
 import './Forca.css';
 
-export default function Forca() {
+const Forca = () => {
   const [letras, setLetras] = React.useState([]);
   const [error, setError] = React.useState('');
   const [corretas, setCorretas] = React.useState([]);
@@ -21,6 +21,14 @@ export default function Forca() {
         setErros(erros - 1);
       }
     }
+  }
+  function reiniciar() {
+    const input = document.getElementById('letra');
+    setErros(7);
+    setLetras([]);
+    setError('');
+    setCorretas([]);
+    input.value = '';
   }
 
   function jogar(e) {
@@ -70,6 +78,11 @@ export default function Forca() {
       {`Chances: ${erros}`}
       <br />
       {error && <p style={{ color: 'red' }}>{error}</p>}
+      <button className="butt" onClick={reiniciar}>
+        Reiniciar
+      </button>
     </Main>
   );
-}
+};
+
+export default Forca;

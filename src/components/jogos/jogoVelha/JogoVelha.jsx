@@ -26,7 +26,7 @@ const initial = {
   p9: '',
 };
 
-export default function JogoDaVelha() {
+const JogoDaVelha = () => {
   const [valor, setValor] = React.useState(initial);
   const [jogador, setJogador] = React.useState(true);
   const [ganhador, setGanhador] = React.useState('');
@@ -232,4 +232,5 @@ export default function JogoDaVelha() {
       </div>
     </Main>
   );
-}
+};
+export default JogoDaVelha;

@@ -2,17 +2,18 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router';
 
 import Home from '../components/home/Home';
-import Projetos from '../components/project/Projects';
+import Projects from '../components/project/Projects';
 import Conversor from '../components/instrumentos/conversor/Conversor';
 import Calculadora from '../components/instrumentos/calculadora/Calculadora';
 import Instrumentos from '../components/instrumentos/Instrumentos';
 import Jogos from '../components/jogos/Jogos';
 import JogoVelha from '../components/jogos/jogoVelha/JogoVelha';
 import Forca from '../components/jogos/JogoForca/Forca';
-export default () => (
+
+const Routes = () => (
   <Switch>
     <Route exact path="/" component={Home} />
-    <Route path="/projetos" component={Projetos} />
+    <Route path="/projetos" component={Projects} />
     <Route path="/conversor" component={Conversor} />
     <Route path="/instrumentos" component={Instrumentos} />
     <Route path="/calculadora" component={Calculadora} />
@@ -22,3 +23,4 @@ export default () => (
     <Redirect from="*" to="/" />
   </Switch>
 );
+export default Routes;

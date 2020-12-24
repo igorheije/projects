@@ -18,7 +18,7 @@ const inicial = {
   hex: '',
 };
 
-export default function Inputs() {
+const Inputs = () => {
   const [valor, setValor] = React.useState(inicial);
 
   function handleChange(event) {
@@ -102,4 +102,5 @@ export default function Inputs() {
       />
     </div>
   );
-}
+};
+export default Inputs;
