@@ -23,14 +23,14 @@ const Inputs = () => {
 
   function handleChange(event) {
     const { name, value } = event.target;
-
+    console.log(value);
     const regexD = /[ 0-9]+$/;
     const regexB = /[0-1]+$/;
     const regexO = /[0-7]+$/;
     const regexH = /[0-9a-f]+$/;
 
     if (name === 'dec') {
-      if (regexD.test(value)) {
+      if (regexD.test(value) || value === '') {
         let numero = Number(value);
         let bin = numero.toString(2);
         let oct = numero.toString(8);
@@ -38,7 +38,7 @@ const Inputs = () => {
         setValor({ ...valor, dec: value, bin: bin, oct: oct, hex: hex });
       }
     }
-    if (name === 'bin') {
+    if (name === 'bin' || value === '') {
       if (regexB.test(value)) {
         let dec = BinToDec(value);
         let oct = BinToOct(value);
@@ -46,7 +46,7 @@ const Inputs = () => {
         setValor({ ...valor, dec: dec, bin: value, oct: oct, hex: hex });
       }
     }
-    if (name === 'oct') {
+    if (name === 'oct' || value === '') {
       if (regexO.test(value)) {
         let dec = OctToDec(value);
         let bin = OctToBin(value);
@@ -54,7 +54,7 @@ const Inputs = () => {
         setValor({ ...valor, bin: bin, dec: dec, oct: value, hex: hex });
       }
     }
-    if (name === 'hex') {
+    if (name === 'hex' || value === '') {
       if (regexH.test(value)) {
         let dec = HexToDec(value);
         let bin = HexToBin(value);
