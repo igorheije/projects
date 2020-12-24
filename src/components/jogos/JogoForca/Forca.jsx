@@ -3,6 +3,22 @@ import React from 'react';
 import Main from '../../template/Main';
 
 import './Forca.css';
+const palavras = [
+  'computador',
+  'brinquedo',
+  'corda',
+  'prego',
+  'carro',
+  'fone',
+  'galinha',
+  'homem',
+  'jogo',
+  'bolinha',
+  'farinha',
+];
+const qtde = palavras.length - 1;
+const pos = Math.round(Math.random() * qtde);
+let palavra = palavras[pos];
 
 const Forca = () => {
   const [letras, setLetras] = React.useState([]);
@@ -10,7 +26,6 @@ const Forca = () => {
   const [corretas, setCorretas] = React.useState([]);
   const [erros, setErros] = React.useState(7);
 
-  const palavra = 'palavra';
   const regexLetras = /^[a-z]+$/i;
 
   function validarLetra(letra) {
